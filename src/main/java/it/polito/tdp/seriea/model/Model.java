@@ -60,6 +60,7 @@ public class Model {
 				}
 			}
 		}
+		System.out.println(this.graph.vertexSet().size()+" "+this.graph.edgeSet().size());
 	}
 	
 	public Season getAnnataOro(Team team) {
