@@ -5,9 +5,15 @@
 package it.polito.tdp.seriea;
 
 import java.net.URL;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+
 import it.polito.tdp.seriea.model.Model;
+import it.polito.tdp.seriea.model.Team;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -25,7 +31,7 @@ public class SerieAController {
     private URL location;
 
     @FXML // fx:id="boxSquadra"
-    private ChoiceBox<?> boxSquadra; // Value injected by FXMLLoader
+    private ChoiceBox<String> boxSquadra; // Value injected by FXMLLoader
 
     @FXML // fx:id="btnSelezionaSquadra"
     private Button btnSelezionaSquadra; // Value injected by FXMLLoader
@@ -41,12 +47,16 @@ public class SerieAController {
 
     @FXML
     void doSelezionaSquadra(ActionEvent event) {
-
+    	txtResult.clear();
+    	txtResult.appendText(this.model.getClassifica(boxSquadra.getValue()));
+    	
+    	
+    	
     }
 
     @FXML
     void doTrovaAnnataOro(ActionEvent event) {
-
+    	this.model.creaGrafo();
     }
 
     @FXML
@@ -66,6 +76,10 @@ public class SerieAController {
     
     public void setModel(Model model) {
 		this.model = model;	
+		ObservableList<String> l = FXCollections.observableList(this.model.getSquadra()) ;
+		boxSquadra.setItems(l);
+		boxSquadra.setValue(l.get(0));
+		
 	}
     
 }

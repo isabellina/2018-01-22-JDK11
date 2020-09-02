@@ -3,6 +3,7 @@ package it.polito.tdp.seriea.model;
 public class Team {
 
 	private String team;
+	
 
 	public Team(String team) {
 		super();
@@ -23,6 +24,9 @@ public class Team {
 	public void setTeam(String team) {
 		this.team = team;
 	}
+	
+
+	
 
 	/*
 	 * (non-Javadoc)
